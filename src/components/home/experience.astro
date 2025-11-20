@@ -1,0 +1,53 @@
+---
+import Section from "./section.astro";
+
+import { experiences } from "@/data/experience";
+---
+
+<Section title="Experience">
+  <ul class="experiences">
+    {
+      experiences.map((exp) => (
+        <li class="experience">
+          <p class="title">
+            <span>{exp.name}</span> • {exp.role}
+          </p>
+          <p class="desc">{exp.description}</p>
+          <p class="date">({exp.date})</p>
+        </li>
+      ))
+    }
+  </ul>
+</Section>
+
+<style>
+  .experiences {
+    list-style: none;
+
+    & .experience {
+      &:not(:last-of-type) {
+        margin-bottom: 28px;
+      }
+
+      & .title {
+        color: var(--color-foreground-subtle);
+        margin-bottom: 2px;
+
+        & span {
+          color: var(--color-foreground);
+          font-weight: 500;
+        }
+      }
+
+      & .desc {
+        color: var(--color-foreground-subtle);
+        margin-bottom: 2px;
+      }
+
+      & .date {
+        color: var(--color-foreground-subtler);
+        font-size: var(--font-sm);
+      }
+    }
+  }
+</style>
