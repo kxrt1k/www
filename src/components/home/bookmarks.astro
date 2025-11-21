@@ -35,6 +35,12 @@ import { bookmarks } from "@/data/bookmarks";
       align-items: center;
       column-gap: 8px;
 
+      &:hover {
+        & .divider {
+          border-color: var(--color-neutral-300);
+        }
+      }
+
       & a {
         color: var(--color-foreground);
         font-weight: 500;
@@ -48,7 +54,8 @@ import { bookmarks } from "@/data/bookmarks";
       & .divider {
         min-width: 20px;
         flex-grow: 1;
-        border-bottom: 1px solid var(--color-neutral-300);
+        border-bottom: 1px solid var(--color-neutral-200);
+        transition: 0.2s;
       }
 
       & .date {

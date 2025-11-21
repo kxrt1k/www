@@ -1,0 +1,22 @@
+---
+import Container from "@/components/container.astro";
+import Hero from "@/components/hero.astro";
+import Layout from "@/layouts/layout.astro";
+import Today from "@/components/about/today.astro";
+import Connect from "@/components/about/connect.astro";
+import Footer from "@/components/footer.astro";
+---
+
+<Layout>
+  <Container>
+    <Hero
+      title="About Me"
+      description="Learn more about me."
+      backLabel="Home 🏠"
+      backUrl="/"
+    />
+    <Today />
+    <Connect />
+    <Footer />
+  </Container>
+</Layout>
