@@ -1,4 +1,6 @@
 ---
+import { MdArrowOutward } from "react-icons/md";
+
 import { formatDate } from "@/helpers/date";
 
 interface Item {
@@ -19,7 +21,12 @@ const { items } = Astro.props;
   {
     items.map((item) => (
       <li>
-        <a href={item.url}>{item.title}</a>
+        <a href={item.url} target="_blank">
+          {item.title}{" "}
+          <span>
+            <MdArrowOutward />
+          </span>
+        </a>
         <p class="desc">{item.description}</p>
         {item.date && <p class="date">{formatDate(item.date)}</p>}
       </li>
@@ -41,6 +48,21 @@ const { items } = Astro.props;
         font-weight: 500;
         margin-bottom: 4px;
         text-decoration: none;
+
+        &:hover {
+          & span {
+            transform: translate(1px, 0px);
+          }
+        }
+
+        & span {
+          font-size: var(--font-sm);
+          line-height: 0;
+          color: #c0eb75;
+          transition: 0.2s;
+          display: inline-block;
+          transform: translateY(1px);
+        }
       }
 
       & .desc {

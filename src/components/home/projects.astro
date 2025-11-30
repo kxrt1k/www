@@ -1,0 +1,26 @@
+---
+import Items from "../items.astro";
+import Section from "../section.astro";
+
+const projects = [
+  {
+    title: "OPN",
+    description: "Your open-source bio page.",
+    url: "https://opn.bio",
+  },
+  {
+    title: "Haus",
+    description: "Dead-simple online workstation.",
+    url: "https://use.haus",
+  },
+  {
+    title: "GitViews",
+    description: "Simple GitHub view counter.",
+    url: "https://gitviews.com",
+  },
+];
+---
+
+<Section title="Projects">
+  <Items items={projects} />
+</Section>
