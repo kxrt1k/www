@@ -10,23 +10,18 @@ interface Bookmark {
 
 export const bookmarks: Bookmark[] = [
   {
-    title: "Bookmark One",
-    date: "2025-11-18",
-    url: "#",
+    title: "Design Engineering 101",
+    date: "2025-11-30",
+    url: "https://www.designdisciplin.com/p/design-engineering-101",
   },
   {
-    title: "Bookmark Two",
-    date: "2025-11-19",
-    url: "#",
+    title: "Design Engineering at Vercel",
+    date: "2025-11-30",
+    url: "https://vercel.com/blog/design-engineering-at-vercel",
   },
   {
-    title: "Bookmark Three",
-    date: "2025-11-20",
-    url: "#",
-  },
-  {
-    title: "Bookmark Four",
-    date: "2025-11-20",
-    url: "#",
+    title: "Developing Taste",
+    date: "2025-11-30",
+    url: "https://emilkowal.ski/ui/developing-taste",
   },
 ];

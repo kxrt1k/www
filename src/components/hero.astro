@@ -11,7 +11,7 @@ const { title, description, backLabel, backUrl } = Astro.props;
 
 <section class="hero">
   <div class="back">
-    <a href={backUrl}>~ {backLabel}</a>
+    <a href={backUrl}><span>~</span> {backLabel}</a>
   </div>
   <h1 class="title">{title}</h1>
   <p class="desc">{description}</p>
@@ -29,6 +29,10 @@ const { title, description, backLabel, backUrl } = Astro.props;
         font-weight: 500;
         font-size: var(--font-xsm);
         text-decoration: none;
+
+        & span {
+          color: #c0eb75;
+        }
       }
     }
 

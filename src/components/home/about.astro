@@ -19,14 +19,10 @@ const links = [
 
 <Section title="About">
   <p class="text">
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi delectus
-    cumque, quidem nemo ullam qui. Fugit, fugiat, fuga nihil error debitis optio
-    temporibus cupiditate consectetur cumque quo dolore minima sapiente.
+    I’m an independent (design) engineer who designs through code. I care deeply
+    about crafting elegant, intuitive user interfaces while writing clean,
+    scalable code.
   </p>
-
-  <div class="more">
-    <a href="/about">(read more)</a>
-  </div>
 
   <div class="links">
     {links.map((link) => <a href={link.url}>{link.label}</a>)}
@@ -38,28 +34,18 @@ const links = [
     color: var(--color-foreground-subtle);
   }
 
-  .more {
-    margin: 16px 0 32px;
-
-    & a {
-      color: var(--color-foreground);
-      font-weight: 500;
-      font-size: var(--font-sm);
-      text-decoration: none;
-    }
-  }
-
   .links {
     display: flex;
     column-gap: 12px;
     row-gap: 8px;
     flex-wrap: wrap;
+    margin-top: 32px;
 
     & a {
       color: var(--color-foreground);
       text-decoration: underline;
       text-decoration-style: dotted;
-      text-decoration-color: var(--color-foreground-subtler);
+      text-decoration-color: #c0eb75;
       text-underline-offset: 4px;
       font-size: var(--font-sm);
       font-weight: 500;

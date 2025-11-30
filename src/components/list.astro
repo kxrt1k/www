@@ -9,16 +9,17 @@ interface Item {
 
 interface Props {
   items: Item[];
+  blank?: boolean;
 }
 
-const { items } = Astro.props;
+const { items, blank = false } = Astro.props;
 ---
 
 <ul class="list">
   {
     items.map((item) => (
       <li>
-        <a target="_blank" href={item.url}>
+        <a target={blank ? "_blank" : "_self"} href={item.url}>
           {item.title}
         </a>
         <div class="divider" />
@@ -42,8 +43,16 @@ const { items } = Astro.props;
       column-gap: 8px;
 
       &:hover {
+        & a {
+          padding-left: 4px;
+        }
+
         & .divider {
           border-color: var(--color-neutral-300);
+        }
+
+        & .date {
+          color: var(--color-foreground-subtle);
         }
       }
 
@@ -55,21 +64,26 @@ const { items } = Astro.props;
         text-overflow: ellipsis;
         white-space: nowrap;
         flex-shrink: 1;
+        transition: 0.2s;
+        padding-left: 0;
       }
 
       & .divider {
         min-width: 20px;
         flex-grow: 1;
-        border-bottom: 1px solid var(--color-neutral-200);
+        border-bottom: 1px dashed var(--color-neutral-200);
         transition: 0.2s;
       }
 
       & .date {
-        font-size: var(--font-sm);
-        color: var(--color-foreground-subtle);
+        font-size: var(--font-xsm);
+        transition: 0.2s;
+        color: var(--color-foreground-subtler);
         font-variant-numeric: tabular-nums;
         flex-shrink: 0;
         white-space: nowrap;
+        font-family: var(--font-mono);
+        text-transform: uppercase;
       }
     }
   }

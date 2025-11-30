@@ -14,11 +14,11 @@ const { tags, title, description, date, readingTime } = Astro.props;
 
 <section class="hero">
   <div class="back">
-    <a href="/blog">~ Blog 📃</a>
+    <a href="/blog"><span>~</span> Blog</a>
   </div>
   <h1 class="title">{title}</h1>
   <p class="desc">{description}</p>
-  <p class="info">{formatDate(date)} • {readingTime}</p>
+  <p class="info">{formatDate(date)} <span>•</span> {readingTime}</p>
   {
     tags && (
       <div class="tags">
@@ -32,7 +32,7 @@ const { tags, title, description, date, readingTime } = Astro.props;
 
 <style>
   .hero {
-    padding: 180px 0 90px;
+    padding: 180px 0 60px;
 
     & .back {
       margin-bottom: 24px;
@@ -42,6 +42,10 @@ const { tags, title, description, date, readingTime } = Astro.props;
         font-weight: 500;
         font-size: var(--font-xsm);
         text-decoration: none;
+
+        & span {
+          color: #c0eb75;
+        }
       }
     }
 
@@ -59,6 +63,12 @@ const { tags, title, description, date, readingTime } = Astro.props;
       font-size: var(--font-sm);
       color: var(--color-foreground-subtler);
       font-variant-numeric: tabular-nums;
+
+      & span {
+        color: #c0eb75;
+        display: inline-block;
+        margin: 0 4px;
+      }
     }
 
     & .tags {

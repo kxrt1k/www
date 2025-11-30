@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 
-import Items from "../items.astro";
 import Section from "../section.astro";
+import List from "../list.astro";
 
 const posts = await getCollection("blog");
 const sorted = posts.sort(
@@ -11,12 +11,11 @@ const sorted = posts.sort(
 const latest = sorted.slice(0, 3);
 const normalized = latest.map((post) => ({
   title: post.data.title,
-  description: post.data.description,
-  date: post.data.date,
+  date: post.data.date.toISOString(),
   url: `/blog/${post.id}`,
 }));
 ---
 
 <Section title="Blog" more={{ label: "view all", url: "/blog" }}>
-  <Items items={normalized} />
+  <List items={normalized} />
 </Section>
