@@ -1,0 +1,16 @@
+---
+import Section from "../section.astro";
+import Items from "../items.astro";
+
+const routes = [
+  {
+    title: "/oss",
+    description: "Discover open-source projects.",
+    url: "/oss",
+  },
+];
+---
+
+<Section title="Routes">
+  <Items items={routes} />
+</Section>

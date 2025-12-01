@@ -1,5 +1,5 @@
 ---
-import { MdArrowOutward } from "react-icons/md";
+import { MdArrowOutward, MdArrowForward } from "react-icons/md";
 
 import { formatDate } from "@/helpers/date";
 
@@ -12,20 +12,23 @@ interface Item {
 
 interface Props {
   items: Item[];
+  blank?: boolean;
 }
 
-const { items } = Astro.props;
+const { items, blank = false } = Astro.props;
 ---
 
 <ul class="items">
   {
     items.map((item) => (
       <li>
-        <a href={item.url} target="_blank">
+        <a
+          href={item.url}
+          class:list={{ blank }}
+          target={blank ? "_blank" : "_self"}
+        >
           {item.title}{" "}
-          <span>
-            <MdArrowOutward />
-          </span>
+          <span>{blank ? <MdArrowOutward /> : <MdArrowForward />}</span>
         </a>
         <p class="desc">{item.description}</p>
         {item.date && <p class="date">{formatDate(item.date)}</p>}
@@ -49,9 +52,15 @@ const { items } = Astro.props;
         margin-bottom: 4px;
         text-decoration: none;
 
-        &:hover {
+        &.blank:hover {
           & span {
             transform: translate(1px, 0px);
+          }
+        }
+
+        &:not(.blank):hover {
+          & span {
+            transform: translate(1px, 1px);
           }
         }
 
@@ -59,7 +68,7 @@ const { items } = Astro.props;
           font-size: var(--font-sm);
           line-height: 0;
           color: #c0eb75;
-          transition: 0.2s;
+          transition: 0.1s;
           display: inline-block;
           transform: translateY(1px);
         }
