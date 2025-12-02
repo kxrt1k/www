@@ -1,0 +1,77 @@
+---
+import Section from "../section.astro";
+
+const links = [
+  {
+    label: "GitHub",
+    url: "https://github.com/remvze",
+  },
+  {
+    label: "X (Twitter)",
+    url: "https://x.com/remvze",
+  },
+  {
+    label: "LinkedIn",
+    url: "https://linkedin.com/in/remvze",
+  },
+  {
+    label: "Instagram",
+    url: "https://instagram.com/remvze",
+  },
+  {
+    label: "Buy Me a Coffee",
+    url: "https://buymeacoffee.com/remvze",
+  },
+];
+---
+
+<Section title="Who am I?">
+  <p class="text">
+    I’m an independent (design) engineer who designs through code. I care deeply
+    about crafting elegant, intuitive user interfaces while writing clean,
+    scalable code.
+  </p>
+</Section>
+
+<Section title="My Work">
+  <p class="text">
+    I'm the founder and curator of Philosophors, a philosophical media brand and
+    wisdom discovery engine, with over one million combined audience. When I'm
+    not working on Philosophors, I'm working on my open-source projects.
+  </p>
+</Section>
+
+<Section title="Connect">
+  <div class="links">
+    {
+      links.map((link) => (
+        <a href={link.url} target="_blank">
+          {link.label}
+        </a>
+      ))
+    }
+  </div>
+</Section>
+
+<style>
+  .text {
+    color: var(--color-foreground-subtle);
+  }
+
+  .links {
+    display: flex;
+    column-gap: 12px;
+    row-gap: 8px;
+    flex-wrap: wrap;
+
+    & a {
+      color: var(--color-foreground);
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-decoration-color: #c0eb75;
+      text-underline-offset: 4px;
+      font-size: var(--font-sm);
+      font-weight: 500;
+    }
+  }
+</style>
