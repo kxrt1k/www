@@ -4,13 +4,6 @@
   margin: 0 auto;
 }
 
-.instruction {
-  color: var(--color-foreground-subtler);
-  font-size: var(--font-xsm);
-  text-align: center;
-  margin-top: 8px;
-}
-
 .textarea {
   height: 200px;
   background: linear-gradient(
@@ -40,6 +33,12 @@
 
   & textarea {
     color: var(--color-foreground);
+    transition: 0.1s;
+    outline: 0 solid var(--color-neutral-400);
+
+    &:focus-visible {
+      outline: 2px solid var(--color-neutral-400);
+    }
   }
 
   & .placeholder {

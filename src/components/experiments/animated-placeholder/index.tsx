@@ -8,7 +8,6 @@ export function AnimatedPlaceholder() {
   return (
     <div className={styles.container}>
       <Textarea value={value} onChange={setValue} />
-      <p className={styles.instruction}>(type something)</p>
     </div>
   );
 }
@@ -88,7 +87,7 @@ function PlaceholderText({ text }: { text: string }) {
   };
 
   return (
-    <AnimatePresence initial={false} mode="wait">
+    <AnimatePresence mode="wait">
       <motion.p
         key={text}
         className={styles.placeholderText}
