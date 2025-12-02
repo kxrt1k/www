@@ -4,4 +4,9 @@ export const experiments = [
     url: "/experiments/tab-bar",
     date: "2025-12-02",
   },
+  {
+    title: "Animated Number Counter",
+    url: "/experiments/animated-number-counter",
+    date: "2025-12-02",
+  },
 ];
