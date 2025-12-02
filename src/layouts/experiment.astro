@@ -3,12 +3,39 @@ import Layout from "./layout.astro";
 ---
 
 <Layout>
+  <header class="header">
+    <a href="/experiments">(experiments)</a>
+    <a href="https://github.com/remvze/www" target="_blank">(source code)</a>
+  </header>
+
   <div class="wrapper">
     <slot />
   </div>
 </Layout>
 
 <style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & a {
+      color: var(--color-foreground-subtler);
+      font-size: var(--font-xsm);
+      text-decoration: none;
+      transition: 0.2s;
+
+      &:hover {
+        color: var(--color-foreground);
+      }
+    }
+  }
+
   .wrapper {
     min-height: 100dvh;
     height: auto;
