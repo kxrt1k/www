@@ -1,0 +1,20 @@
+---
+import Layout from "./layout.astro";
+---
+
+<Layout>
+  <div class="wrapper">
+    <slot />
+  </div>
+</Layout>
+
+<style>
+  .wrapper {
+    min-height: 100dvh;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 200px 0;
+  }
+</style>
