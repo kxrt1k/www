@@ -12,7 +12,7 @@ export function CookieSettings() {
       y: 0,
       x: 0,
       filter: "blur(0px)",
-      transition: { duration: 0.2 },
+      transition: { duration: 0.175 },
     },
   };
 
@@ -58,8 +58,9 @@ export function CookieSettings() {
                 hidden: {},
                 show: {
                   transition: {
-                    delay: 0.05,
-                    delayChildren: stagger(0.065),
+                    ease: "easeIn",
+                    delayChildren: 0.15,
+                    staggerChildren: 0.019,
                   },
                 },
               }}
