@@ -19,4 +19,9 @@ export const experiments = [
     url: "/experiments/glowing-cards",
     date: "2025-12-03",
   },
+  {
+    title: "Cookie Settings",
+    url: "/experiments/cookie-settings",
+    date: "2025-12-03",
+  },
 ];
