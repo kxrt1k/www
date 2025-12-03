@@ -6,13 +6,11 @@ export function CookieSettings() {
   const [isOpen, setIsOpen] = useState(false);
 
   const childVariants = {
-    hidden: { opacity: 0, y: 6, x: 6, filter: "blur(2px)" },
+    hidden: { opacity: 0, scale: 0.98 },
     show: {
       opacity: 1,
-      y: 0,
-      x: 0,
-      filter: "blur(0px)",
-      transition: { duration: 0.175 },
+      scale: 1,
+      transition: { duration: 0.3 },
     },
   };
 
@@ -59,7 +57,7 @@ export function CookieSettings() {
                 show: {
                   transition: {
                     ease: "easeIn",
-                    delayChildren: 0.1,
+                    delayChildren: 0.075,
                   },
                 },
               }}
