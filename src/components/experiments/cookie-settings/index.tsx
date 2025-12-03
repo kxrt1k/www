@@ -1,60 +1,83 @@
-import { AnimatePresence, motion, MotionConfig } from "motion/react";
+import { AnimatePresence, motion, MotionConfig, stagger } from "motion/react";
 import { useState } from "react";
 import styles from "./cookie-settings.module.css";
 
 export function CookieSettings() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const childVariants = {
+    hidden: { opacity: 0, y: 6, x: 6, filter: "blur(2px)" },
+    show: {
+      opacity: 1,
+      y: 0,
+      x: 0,
+      filter: "blur(0px)",
+      transition: { duration: 0.2 },
+    },
+  };
+
   return (
     <MotionConfig
       transition={{
         type: "spring",
-        visualDuration: 0.25,
-        bounce: 0.1,
+        stiffness: 280,
+        damping: 28,
+        mass: 0.8,
+        visualDuration: 0.2,
       }}
     >
       <AnimatePresence mode="popLayout">
         {!isOpen && (
           <motion.div
             key="button"
+            layout
             layoutId="background"
             className={styles.cookieBackground}
+            whileTap={{ scale: 0.95 }}
           >
             <button onClick={() => setIsOpen(true)}>
-              <motion.span layoutId="emoji">🍪</motion.span>
+              <motion.span layoutId="emoji" className={styles.emoji}>
+                🍪
+              </motion.span>
             </button>
           </motion.div>
         )}
 
         {isOpen && (
           <motion.div
-            layoutId="background"
             key="modal"
+            layoutId="background"
             className={styles.settings}
+            exit={{ opacity: 0, scale: 0.98 }}
           >
             <motion.div
-              initial={{ opacity: 0 }}
-              exit={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial="hidden"
+              animate="show"
+              exit="hidden"
+              variants={{
+                hidden: {},
+                show: {
+                  transition: {
+                    delay: 0.05,
+                    delayChildren: stagger(0.065),
+                  },
+                },
+              }}
             >
               <h1>
-                <motion.span className={styles.emoji} layoutId="emoji">
+                <motion.span layoutId="emoji" className={styles.emoji}>
                   🍪
                 </motion.span>{" "}
-                <motion.span
-                  initial={{ opacity: 0, y: 4 }}
-                  animate={{ opacity: 1, y: 0, transition: { delay: 0.15 } }}
-                  className={styles.text}
-                >
+                <motion.span variants={childVariants} className={styles.text}>
                   Cookie Settings
                 </motion.span>
               </h1>
 
-              <motion.div
-                className={styles.buttons}
-                initial={{ opacity: 0, y: 4 }}
-                animate={{ opacity: 1, y: 0, transition: { delay: 0.15 } }}
-              >
+              <motion.p variants={childVariants}>
+                Manage your cookie preferences here!
+              </motion.p>
+
+              <motion.div className={styles.buttons} variants={childVariants}>
                 <button onClick={() => setIsOpen(false)}>Accept All</button>
                 <button onClick={() => setIsOpen(false)}>Reject All</button>
               </motion.div>

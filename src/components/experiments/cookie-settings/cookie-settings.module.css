@@ -35,9 +35,15 @@
       display: inline-block;
     }
 
-    & .content {
+    & .text {
       display: inline-block;
     }
+  }
+
+  & p {
+    color: var(--color-foreground-subtle);
+    font-size: var(--font-sm);
+    margin-top: 8px;
   }
 
   & .buttons {
@@ -49,13 +55,18 @@
     & button {
       padding: 8px 0;
       flex-grow: 1;
-      background: var(--color-neutral-300);
+      background: var(--color-neutral-200);
       border-radius: 8px;
-      border: 0;
+      border: 1px solid var(--color-neutral-300);
       cursor: pointer;
+      transition: background 0.2s;
       color: var(--color-foreground);
       font-weight: 500;
       font-size: var(--font-sm);
+
+      &:hover {
+        background: var(--color-neutral-300);
+      }
     }
   }
 }
