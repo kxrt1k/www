@@ -14,4 +14,9 @@ export const experiments = [
     url: "/experiments/animated-placeholder",
     date: "2025-12-02",
   },
+  {
+    title: "Glowing Cards",
+    url: "/experiments/glowing-cards",
+    date: "2025-12-03",
+  },
 ];
