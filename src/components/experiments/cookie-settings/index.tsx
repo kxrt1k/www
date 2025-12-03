@@ -59,8 +59,7 @@ export function CookieSettings() {
                 show: {
                   transition: {
                     ease: "easeIn",
-                    delayChildren: 0.15,
-                    staggerChildren: 0.019,
+                    delayChildren: 0.1,
                   },
                 },
               }}
