@@ -2,25 +2,9 @@
 import Items from "../items.astro";
 import Section from "../section.astro";
 
-const projects = [
-  {
-    title: "OPN",
-    description: "Your open-source bio page.",
-    url: "https://opn.bio",
-  },
-  {
-    title: "Haus",
-    description: "Dead-simple online workstation.",
-    url: "https://use.haus",
-  },
-  {
-    title: "GitViews",
-    description: "Simple GitHub view counter.",
-    url: "https://gitviews.com",
-  },
-];
+import { projects } from "@/data/projects";
 ---
 
-<Section title="Projects">
-  <Items items={projects} blank />
+<Section title="Projects" more={{ label: "view all", url: "/projects" }}>
+  <Items items={projects.slice(0, 3)} blank />
 </Section>
