@@ -27,7 +27,7 @@ export const projects = [
   {
     title: "Nothing",
     description: "Simply do nothing and just be.",
-    url: "https://designengineers.net",
+    url: "https://usenothing.com",
   },
   {
     title: "Nicefolios",
