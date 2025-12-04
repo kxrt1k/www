@@ -54,4 +54,9 @@ export const projects = [
     description: "Simple secure password generator.",
     url: "https://pswd.software",
   },
+  {
+    title: "Calmness",
+    description: "Breathing exercise in your browser.",
+    url: "https://calmness.app",
+  },
 ];
