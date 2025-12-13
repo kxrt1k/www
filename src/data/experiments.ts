@@ -24,4 +24,9 @@ export const experiments = [
     url: "/experiments/cookie-settings",
     date: "2025-12-03",
   },
+  {
+    title: "Hold to Confirm",
+    url: "/experiments/hold-to-confirm",
+    date: "2025-12-13",
+  },
 ];
