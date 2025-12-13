@@ -32,12 +32,10 @@ export function HoldToConfirm() {
       }}
       onPointerUp={() => {
         if (isConfirmed) return;
-
         animate(progress, 0, { duration: 0.2 });
       }}
       onPointerLeave={() => {
         if (isConfirmed) return;
-
         animate(progress, 0, { duration: 0.2 });
       }}
       className={styles.button}
@@ -55,15 +53,29 @@ export function HoldToConfirm() {
 
 function Label({ isConfirmed }: { isConfirmed: boolean }) {
   const [changed, setChanged] = useState(false);
-  const [width, setWidth] = useState(0);
+  const [width, setWidth] = useState<number | null>(null);
+  const [ready, setReady] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (ref.current) {
-      const { width } = ref.current.getBoundingClientRect();
+    let cancelled = false;
 
-      setWidth(width);
+    async function measure() {
+      if ("fonts" in document) {
+        await document.fonts.ready;
+      }
+
+      if (!cancelled && ref.current) {
+        setWidth(ref.current.getBoundingClientRect().width);
+        setReady(true);
+      }
     }
+
+    measure();
+
+    return () => {
+      cancelled = true;
+    };
   }, [changed]);
 
   return (
@@ -74,17 +86,15 @@ function Label({ isConfirmed }: { isConfirmed: boolean }) {
           position: "absolute",
           visibility: "hidden",
           whiteSpace: "nowrap",
+          pointerEvents: "none",
         }}
       >
-        {changed ? "Confirmed!" : "Hold to Cofirm"}
+        {changed ? "Confirmed!" : "Hold to Confirm"}
       </div>
 
       <motion.div
-        transition={{
-          duration: 0.15,
-          ease: "easeOut",
-        }}
-        animate={{ width }}
+        animate={ready && width !== null ? { width } : undefined}
+        transition={{ duration: 0.15, ease: "easeOut" }}
         style={{ position: "relative" }}
       >
         <AnimatePresence
@@ -93,14 +103,17 @@ function Label({ isConfirmed }: { isConfirmed: boolean }) {
           onExitComplete={() => setChanged(true)}
         >
           <motion.span
+            key={isConfirmed ? "yes" : "no"}
             initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.1 }}
             exit={{ opacity: 0, y: -10, filter: "blur(8px)" }}
-            key={isConfirmed ? "yes" : "no"}
-            style={{ whiteSpace: "nowrap", display: "inline-block" }}
+            transition={{ duration: 0.1 }}
+            style={{
+              whiteSpace: "nowrap",
+              display: "inline-block",
+            }}
           >
-            {isConfirmed ? "Confirmed!" : "Hold to Cofirm"}
+            {isConfirmed ? "Confirmed!" : "Hold to Confirm"}
           </motion.span>
         </AnimatePresence>
       </motion.div>
