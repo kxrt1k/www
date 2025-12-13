@@ -1,0 +1,109 @@
+import { useEffect, useRef, useState } from "react";
+import {
+  useMotionValue,
+  useTransform,
+  motion,
+  animate,
+  AnimatePresence,
+} from "motion/react";
+
+import styles from "./hold-to-confirm.module.css";
+
+export function HoldToConfirm() {
+  const [isConfirmed, setIsConfirmed] = useState(false);
+  const progress = useMotionValue(0);
+  const width = useTransform(progress, [0, 1], ["0%", "100%"]);
+  const scale = useTransform(progress, [0, 1], [1, 0.875]);
+
+  return (
+    <motion.button
+      onPointerDown={() => {
+        if (isConfirmed) return;
+
+        progress.set(0);
+
+        animate(progress, 1, {
+          duration: 1.5,
+          onComplete: () => {
+            setIsConfirmed(true);
+            progress.set(0);
+          },
+        });
+      }}
+      onPointerUp={() => {
+        if (isConfirmed) return;
+
+        animate(progress, 0, { duration: 0.2 });
+      }}
+      onPointerLeave={() => {
+        if (isConfirmed) return;
+
+        animate(progress, 0, { duration: 0.2 });
+      }}
+      className={styles.button}
+      disabled={isConfirmed}
+      style={{ scale }}
+    >
+      <motion.div
+        style={{ width: isConfirmed ? "100%" : width }}
+        className={styles.progress}
+      />
+      <Label isConfirmed={isConfirmed} />
+    </motion.button>
+  );
+}
+
+function Label({ isConfirmed }: { isConfirmed: boolean }) {
+  const [changed, setChanged] = useState(false);
+  const [width, setWidth] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (ref.current) {
+      const { width } = ref.current.getBoundingClientRect();
+
+      setWidth(width);
+    }
+  }, [changed]);
+
+  return (
+    <>
+      <div
+        ref={ref}
+        style={{
+          position: "absolute",
+          visibility: "hidden",
+          whiteSpace: "nowrap",
+        }}
+      >
+        {changed ? "Confirmed!" : "Hold to Cofirm"}
+      </div>
+
+      <motion.div
+        transition={{
+          duration: 0.15,
+          ease: "easeOut",
+        }}
+        animate={{ width }}
+        style={{ position: "relative" }}
+      >
+        <AnimatePresence
+          mode="wait"
+          initial={false}
+          onExitComplete={() => setChanged(true)}
+        >
+          <motion.span
+            initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.1 }}
+            exit={{ opacity: 0, y: -10, filter: "blur(8px)" }}
+            key={isConfirmed ? "yes" : "no"}
+            style={{ whiteSpace: "nowrap", display: "inline-block" }}
+          >
+            {isConfirmed ? "Confirmed!" : "Hold to Cofirm"}
+          </motion.span>
+        </AnimatePresence>
+      </motion.div>
+    </>
+  );
+}
