@@ -1,4 +1,6 @@
-export const experiments = [
+import { reverseArray } from "@/helpers/array";
+
+const _experiments = [
   {
     title: "Tab Bar Component",
     url: "/experiments/tab-bar",
@@ -30,3 +32,5 @@ export const experiments = [
     date: "2025-12-13",
   },
 ];
+
+export const experiments = reverseArray(_experiments);
