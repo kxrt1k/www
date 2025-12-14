@@ -31,6 +31,11 @@ const _experiments = [
     url: "/experiments/hold-to-confirm",
     date: "2025-12-13",
   },
+  {
+    title: "Animated Accordions",
+    url: "/experiments/animated-accordions",
+    date: "2025-12-14",
+  },
 ];
 
 export const experiments = reverseArray(_experiments);
