@@ -36,6 +36,11 @@ const _experiments = [
     url: "/experiments/animated-accordions",
     date: "2025-12-14",
   },
+  {
+    title: "Text Hightlight on Scroll",
+    url: "/experiments/text-highlight-on-scroll",
+    date: "2025-12-17",
+  },
 ];
 
 export const experiments = reverseArray(_experiments);
