@@ -61,12 +61,13 @@ const { tags, title, description, date, readingTime } = Astro.props;
 
     & .info {
       font-size: var(--font-sm);
-      color: var(--color-foreground-subtle);
+      color: var(--color-foreground-subtler);
       font-variant-numeric: tabular-nums;
 
       & span {
         color: var(--color-foreground-subtler);
         display: inline-block;
+        opacity: 0.6;
         margin: 0 4px;
       }
     }
