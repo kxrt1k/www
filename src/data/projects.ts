@@ -30,16 +30,6 @@ export const projects = [
     url: "https://usenothing.com",
   },
   {
-    title: "Nicefolios",
-    description: "Archive of exceptional portfolios.",
-    url: "https://nicefolios.com",
-  },
-  {
-    title: "Minimum",
-    description: "Minimal websites directory.",
-    url: "https://mnmm.xyz",
-  },
-  {
     title: "Gitscovery",
     description: "Discover open-source projects.",
     url: "https://gitscovery.com",
