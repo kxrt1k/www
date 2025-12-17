@@ -37,7 +37,7 @@ const _experiments = [
     date: "2025-12-14",
   },
   {
-    title: "Text Hightlight on Scroll",
+    title: "Text Highlight on Scroll",
     url: "/experiments/text-highlight-on-scroll",
     date: "2025-12-17",
   },
