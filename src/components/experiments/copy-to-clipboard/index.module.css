@@ -44,6 +44,7 @@
   transition: 0.2s;
   cursor: pointer;
   column-gap: 7px;
+  -webkit-tap-highlight-color: transparent;
 
   &:hover {
     background: var(--color-neutral-200);
