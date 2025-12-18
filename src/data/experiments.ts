@@ -41,6 +41,11 @@ const _experiments = [
     url: "/experiments/text-highlight-on-scroll",
     date: "2025-12-17",
   },
+  {
+    title: "Copy to Clipboard",
+    url: "/experiments/copy-to-clipboard",
+    date: "2025-12-18",
+  },
 ];
 
 export const experiments = reverseArray(_experiments);
