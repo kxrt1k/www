@@ -46,6 +46,11 @@ const _experiments = [
     url: "/experiments/copy-to-clipboard",
     date: "2025-12-18",
   },
+  {
+    title: "Cancel Deletion",
+    url: "/experiments/cancel-deletion",
+    date: "2025-12-19",
+  },
 ];
 
 export const experiments = reverseArray(_experiments);
