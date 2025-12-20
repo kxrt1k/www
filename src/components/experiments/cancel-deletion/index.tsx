@@ -6,6 +6,7 @@ import styles from "./index.module.css";
 export function CancelDeletion() {
   const [remaining, setRemaining] = useState(10);
   const [state, setState] = useState<"delete" | "undo">("delete");
+  const [isDisabled, setIsDiabled] = useState(false);
 
   const progress = useRef<HTMLDivElement>(null);
   const interval = useRef<ReturnType<typeof setInterval>>(null);
@@ -15,6 +16,7 @@ export function CancelDeletion() {
 
     setState("undo");
     setRemaining(10);
+    setIsDiabled(true);
 
     interval.current = setInterval(
       () => setRemaining((prev) => prev - 1),
@@ -24,6 +26,7 @@ export function CancelDeletion() {
 
   const undoAction = () => {
     setState("delete");
+    setIsDiabled(true);
 
     if (interval.current) clearInterval(interval.current);
   };
@@ -52,7 +55,11 @@ export function CancelDeletion() {
   }, [state]);
 
   return (
-    <AnimatePresence mode="popLayout" initial={false}>
+    <AnimatePresence
+      mode="popLayout"
+      initial={false}
+      onExitComplete={() => setIsDiabled(false)}
+    >
       {state === "delete" && (
         <motion.button
           key={state}
@@ -60,10 +67,16 @@ export function CancelDeletion() {
           onClick={deleteAction}
           className={styles.deleteButton}
           style={{ borderRadius: 999 }}
+          disabled={isDisabled}
         >
           <motion.span
             initial={{ opacity: 0, y: 16, filter: "blur(2px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              filter: "blur(0px)",
+              transition: { delay: 0.1 },
+            }}
             exit={{ opacity: 0, y: -16, filter: "blur(2px)" }}
           >
             Delete Post
@@ -75,15 +88,21 @@ export function CancelDeletion() {
         <motion.button
           key={state}
           layoutId="button"
-          onClick={() => setState("delete")}
+          onClick={undoAction}
           className={styles.undoButton}
           style={{ borderRadius: 999 }}
+          disabled={isDisabled}
         >
           <motion.div ref={progress} className={styles.progress} />
 
           <motion.span
             initial={{ opacity: 0, y: 16, filter: "blur(2px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              filter: "blur(0px)",
+              transition: { delay: 0.1 },
+            }}
             exit={{ opacity: 0, y: -16, filter: "blur(2px)" }}
           >
             Cancel Deletion
